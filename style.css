@@ -90,6 +90,24 @@ h2 {
   width: 100%;
 }
 
+/* Logout Button Styling */
+.nav-links a.logout-btn {
+  background-color: #ea4335;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a.logout-btn:hover {
+  background-color: #d33426;
+  color: white;
+}
+
+.nav-links a.logout-btn::after {
+  display: none;
+}
+
 /* =========================
    HERO
 ========================= */

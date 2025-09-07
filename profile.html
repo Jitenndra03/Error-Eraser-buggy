@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - GDGOC PSIT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="profile.css">
+  <script src="auth.js"></script>
+</head>
+<body>
+  <script>
+    
+    requireAuth();
+  </script>
+
+  <div class="login-container">
+    <div class="login-card">
+      
+      <img src="gdg-logo.png" alt="GDGOC Logo" class="login-logo">
+
+      
+      <h2>My Profile</h2>
+      <p class="subtitle">Welcome to your GDGOC Community Profile</p>
+
+      
+      <div id="success-message" style="display: none;" class="success-message">
+        Profile saved successfully! Redirecting to home page...
+      </div>
+      
+      <form id="profileForm">
+        <div class="input-group">
+          <input type="text" name="name" id="name" placeholder="Name" required>
+        </div>
+
+        <div class="input-group">
+          <input type="email" name="email" id="email" placeholder="Email" required>
+        </div>
+
+        <div class="input-group">
+          <input type="text" name="rollNumber" id="rollNumber" placeholder="Roll Number" required>
+        </div>
+
+        <div class="input-group">
+          <input type="text" name="branch" id="branch" placeholder="Branch" required>
+        </div>
+
+        <div class="input-group">
+          <input type="text" name="year" id="year" placeholder="Year" required>
+        </div>
+
+        <div class="input-group">
+          <input type="text" name="section" id="section" placeholder="Section" required>
+        </div>
+
+        <div class="input-group">
+          <input type="text" name="hobbies" id="hobbies" placeholder="Hobbies (e.g., Reading, Gaming)" required>
+        </div>
+
+        <div class="input-group">
+          <input type="text" name="skills" id="skills" placeholder="Skills (e.g., Python, Web Dev)" required>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn">Save Profile</button>
+          <button type="reset" class="reset-btn">Reset</button>
+        </div>
+
+        <div class="signup-link">
+          <p><a href="index.html">Back to Home</a></p>
+          <a href="#"  onclick="logout(); return false;">Logout</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    
+     function showSuccessAndRedirect() {
+       
+       const successMessage = document.getElementById('success-message');
+       successMessage.style.display = 'block';
+       
+      
+       setTimeout(function() {
+         window.location.href = 'index.html';
+       }, 2000);
+     }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+     
+      requireAuth();
+      
+      
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        
+        if (nameInput && user.name) {
+          nameInput.value = user.name;
+        }
+        
+        if (emailInput && user.email) {
+          emailInput.value = user.email;
+        }
+      }
+      
+     
+      document.getElementById('profileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+      
+        if (!isLoggedIn()) {
+          window.location.href = 'login.html';
+          return;
+        }
+        
+        
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          rollNumber: document.getElementById('rollNumber').value,
+          branch: document.getElementById('branch').value,
+          year: document.getElementById('year').value,
+          section: document.getElementById('section').value,
+          hobbies: document.getElementById('hobbies').value,
+          skills: document.getElementById('skills').value,
+          timestamp: new Date().toISOString()
+        };
+        
+        
+        localStorage.setItem('userProfile', JSON.stringify(formData));
+        
+        const textContent = Object.entries(formData)
+          .map(([key, value]) => `${key}: ${value}`)
+          .join('\n');
+        
+        
+        showSuccessAndRedirect();
+      });
+    });
+  </script>
+</body>
+</html>
