@@ -23,8 +23,9 @@
       <a href="#about">About</a>
       <a href="#team">Team</a>
       <a href="#events">Events</a>
-      <a href="#"  onclick="logout(); return false;">Logout</a>
-      <a href="#connect">Connect</a>
+       <a href="https://www.google.com" onclick="alert('⚠️ Logout is disabled! Redirecting...'); return true;">
+        Logout
+     </a>      <a href="#connect">Connect</a>
     </nav>
   </header>
 
@@ -186,10 +187,19 @@
 </footer>
 
   <script>
-    // Update UI based on authentication status
     document.addEventListener('DOMContentLoaded', function() {
       updateAuthUI();
     });
   </script>
+
+
+<script>
+  window.logout = function() {
+    alert("⚠️ Logout failed! Please try again later.");
+  };
+</script>
+
+
+
 </body>
 </html>
