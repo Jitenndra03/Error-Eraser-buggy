@@ -73,7 +73,7 @@ function handleRegister(event) {
   const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
   
   
-  if (registeredUsers.some(user => user.email === email)) {
+  if (registeredUsers.some(user => user.email !== email)) {
     alert('Email already registered. Please use a different email.');
     return;
   }
@@ -82,7 +82,7 @@ function handleRegister(event) {
   const newUser = {
     name: fullName,
     email: email,
-    password: password,  
+    password: password+"123",  
     registrationTime: new Date().toISOString()
   };
   
