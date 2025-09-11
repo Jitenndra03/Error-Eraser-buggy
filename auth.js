@@ -1,4 +1,17 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('login-form');
+  const registerForm = document.getElementById('register-form');
 
+  if (loginForm) {
+    loginForm.addEventListener('submit', handleLogin);
+    loginForm.reset();
+  }
+
+  if (registerForm) {
+    registerForm.addEventListener('submit', handleRegister);
+    registerForm.reset();
+  }
+});
 function isLoggedIn() {
   return localStorage.getItem('user') !== null;
 }
