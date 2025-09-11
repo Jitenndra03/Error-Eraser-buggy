@@ -20,9 +20,9 @@
      </div>
 
     <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#team">Team</a>
-      <a href="#events">Events</a>
+      <a href="#team">About</a>
+      <a href="#about">Team</a>
+      
        <a href="https://www.google.com" onclick="alert('⚠️ Logout is disabled! Redirecting...'); return true;">
         Logout
      </a>      <a href="#connect">Connect</a>
@@ -30,21 +30,35 @@
   </header>
 
   <!-- gdgoc + psit  -->
-  <section class="hed">
-  <h1>Google Developer Group On Campus</h1>
-  <H3>Pranveer Singh Institute Of Technology Kanpur</H3>
-
+<section class="hed">
+  <h1 onmouseover="window.location.href='https://www.google.com';" style="cursor:pointer;">
+    Google Developer Group On Campus
+  </h1>
+  <h3>Pranveer Singh Institute Of Technology Kanpur</h3>
 </section>
+
 
   <!-- ABOUT -->
   <section id="about" class="content">
-    <h2>About</h2>
-    <p>
- <p>sA a tneduts-nur hcet ,ytinummoc CoGDG TISP spleh srebmem nrut cimedaca egdelwonk otni lacitcarp slliks</p><p>eW edivorp a evitroppus ecaps ot nrael hguorht sdnah-no spohskrow dna maet .stcejorp</p>
- eW mia ot piuqe yreve rebmem htiw eht ,slliks ,ecnedifnoc dna krowten dedeen ot deeccus ni eht ygolonhcet .yrtsudni
-    </p>
-  </section>
+  <h2>About</h2>
+  
+  <p class="about-text">.slliks lacitcarp otni egdelwonk cimedaca nrut srebmem spleh TISP CoGDG ,ytinummoc hcet nur-tneduts a sA</p>
+  <p class="about-text">stcejorp maet dna spohskrow no-sdnah hguorht nrael ot ecaps evitroppus a edivorp eW</p>
+  <p class="about-text">.yrtsudni ygolonhcet eht ni deeccus ot dedeen krowten dna ,ecnedifnoc ,slliks eht htiw rebmem yreve piuqe ot mia eW</p>
 
+  
+  <script>
+    
+    const REVERSE_TEXT = false;
+
+    const paragraphs = document.querySelectorAll('.about-text');
+    paragraphs.forEach(p => {
+      if (REVERSE_TEXT) {
+        p.textContent = p.textContent.split('').reverse().join('');
+      }
+    });
+  </script>
+</section>
 
 
     <!-- TEAM -->
